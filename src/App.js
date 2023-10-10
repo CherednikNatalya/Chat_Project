@@ -6,7 +6,7 @@ import MainPage from 'pages/MainPage/MainPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import Account from 'pages/AccountPage/AccountPage';
-import Layout from 'pages/AccountPage/AccountPage';
+import Layout from 'components/Layout/Layout';
 // import Page404 from 'page/Page404/Page404';
 
 export const  App=() => {
