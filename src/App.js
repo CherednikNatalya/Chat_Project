@@ -6,7 +6,8 @@ import MainPage from 'pages/MainPage/MainPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import Account from 'pages/AccountPage/AccountPage';
-import Layout from 'pages/AccountPage/AccountPage';
+import SearchRoomPage from 'pages/SearchRoomPage/SearchRoomPage';
+import Layout from 'components/Layout/Layout';
 // import Page404 from 'page/Page404/Page404';
 
 export const  App=() => {
@@ -19,6 +20,7 @@ export const  App=() => {
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/register' element={<RegisterPage/>}/>
       <Route path='/account' element={<Account/>}/>
+      <Route path='/search' element={<SearchRoomPage/>}/>
       {/* <Route path="*" element={<Page404/>} /> */}
       </Route>
     </Routes>
