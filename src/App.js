@@ -11,7 +11,7 @@ import SearchRoomPage from 'pages/SearchRoomPage/SearchRoomPage';
 import Layout from 'components/Layout/Layout';
 // import Page404 from 'page/Page404/Page404';
 
-export const  App=() => {
+export default function App() {
  
   return (
     <div>
@@ -29,4 +29,6 @@ export const  App=() => {
   );
 }
 
-export default App;
+
+
+
