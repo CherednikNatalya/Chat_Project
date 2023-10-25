@@ -30,7 +30,7 @@ let schema = yup.object().shape({
             'Invalid email address'
         )
         .required(),
-    password: yup.string().min(6).max(15).required(),
+    password: yup.string().min(8).max(30).required(),
 });
 
 const  RegisterForm  = () => {
@@ -84,16 +84,7 @@ const formik = useFormik({
                     <Success>Field is not empty</Success>
                 ) : null}
 
-                {formik.errors.name ? (
-                    <ValidationIcon 
-                    // src={ErrorImg}
-                     alt="error" />
-                ) : !formik.errors.name && formik.touched.name ? (
-                    <ValidationIcon 
-                    // src={SuccessImg} 
-                    alt="Success" />
-                ) : null}
-
+             
             </ItemWrapp>
 
             <ItemWrapp>

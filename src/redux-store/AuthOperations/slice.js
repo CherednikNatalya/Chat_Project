@@ -39,14 +39,13 @@ export const authSlice = createSlice({
       .addCase(register.pending, handlePending)
       .addCase(register.rejected, handleRejected)
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.newUser;
+        state.user = action.payload.user;
         state.token = action.payload.token;
       })
 
       .addCase(logIn.pending, handlePending)
       .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
-        console.log(action);
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;

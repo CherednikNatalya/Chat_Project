@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import swal from 'sweetalert';
 
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = "http://talk-and-travel.us-east-1.elasticbeanstalk.com";
 
 export const token = {
   set(token) {
@@ -16,7 +16,7 @@ export const token = {
 
 export const register = createAsyncThunk('auth/register', async userData => {
   try {
-    const response = await axios.post('auth/signup', userData);
+    const response = await axios.post('/api/authentication/register', userData);
     token.set(response.data.token);
     console.log(response);
 
@@ -37,7 +37,7 @@ export const register = createAsyncThunk('auth/register', async userData => {
 
 export const logIn = createAsyncThunk('auth/login', async userData => {
   try {
-    const response = await axios.post('auth/signin', userData);
+    const response = await axios.post('/api/authentication/login', userData);
     token.set(response.data.token);
     console.log(response);
 
