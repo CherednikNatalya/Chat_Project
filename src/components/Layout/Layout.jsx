@@ -1,12 +1,10 @@
 import { Outlet } from 'react-router-dom';
-
+import { Suspense, useEffect, useState  } from 'react';
 
 import SideBar from 'components/SideBar/SideBar';
 import ChatList from 'components/ChatList/ChatList'
-import { Suspense } from 'react';
-import { Container, Wrapper } from './LayoutStyled';
-import { useEffect, useState } from 'react';
 
+import { Container, Wrapper } from './LayoutStyled';
 import Loader from 'components/Loader/Loader';
 
 const Layout = () => {
