@@ -1,7 +1,7 @@
 import React from 'react';
-import ChatMap from '../../components/ChatMap/ChatMap';
+import ChatMap from '../ChatMap/ChatMap';
 
-export default function SearchRoomPage() {
+export default function SearchRoom () {
   return (
     <div>
       SearchRoomPage

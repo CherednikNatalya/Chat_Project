@@ -1,31 +1,80 @@
 
 // import './App.css';
-
+import { Suspense } from 'react';
 import { Routes, Route } from "react-router-dom";
 
 import MainPage from 'pages/MainPage/MainPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
-import Account from 'pages/AccountPage/AccountPage';
-import SearchRoomPage from 'pages/SearchRoomPage/SearchRoomPage';
+import AccountPage from 'pages/AccountPage/AccountPage';
+import ChartPage from 'pages/ChartPage/ChartPage'
+// import SearchRoomPage from 'pages/SearchRoomPage/SearchRoomPage';
 import Layout from 'components/Layout/Layout';
 // import Page404 from 'page/Page404/Page404';
+import Loader from './components/Loader/Loader';
+import VerificationPage from 'pages/VerificationPage/VerificationPage'
+import PrivateRoute from 'PrivateRoute';
+import RestrictedRoute from 'RestrictedRoute';
 
 export default function App() {
  
   return (
-    <div>
+    <>
+    <Suspense fallback={<Loader />}>
     <Routes>
+
     <Route path="/" element={<Layout />}>
-       <Route index  element={<MainPage/>}/>
-      <Route path='/login' element={<LoginPage/>}/>
-      <Route path='/register' element={<RegisterPage/>}/>
-      <Route path='/account' element={<Account/>}/>
-      <Route path='/search' element={<SearchRoomPage/>}/>
+    <Route index element={
+              <RestrictedRoute
+                redirectTo={`/account`}
+                component={<MainPage />}
+              />
+            }
+          />
+      <Route path="/"
+            element={
+              <RestrictedRoute
+                redirectTo={`/account`}
+                component={<MainPage />}
+              />
+            }
+          />
+       <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo={`/account`}
+                component={<LoginPage />}
+              />
+            }
+          />
+       <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo={`/account`}
+                component={<RegisterPage />}
+              />
+            }
+          />
+       <Route path="/register/:token" element={<VerificationPage />} />;
+       <Route
+            path="/"
+            element={
+              <PrivateRoute redirectTo="/login" component={<Layout />} />
+            }
+          ></Route>
+
+
+      <Route path='/account' element={<AccountPage/>}/>
+      <Route path='/chat' element={<ChartPage/>}/>
+      {/* <Route path='/search' element={<SearchRoomPage/>}/> */}
       {/* <Route path="*" element={<Page404/>} /> */}
       </Route>
+
     </Routes>
-    </div>
+    </Suspense>
+    </>
   );
 }
 

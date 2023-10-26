@@ -34,7 +34,8 @@ const handleRejected = (state, action) => {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: builder =>
+  extraReducers: 
+  builder =>
     builder
       .addCase(register.pending, handlePending)
       .addCase(register.rejected, handleRejected)

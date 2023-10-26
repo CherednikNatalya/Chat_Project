@@ -7,7 +7,7 @@ import {
     StyledLabel,
     Error,
     Success,
-    ValidationIcon,
+    // ValidationIcon,
     StyledInput,
     SignUpBtn,
 } from './RegisterForm.styled'
@@ -110,16 +110,6 @@ const formik = useFormik({
                     <Success>Field is not empty</Success>
                 ) : null}
 
-                {formik.errors.email ? (
-                    <ValidationIcon 
-                    // src={ErrorImg}
-                     alt="error" />
-                ) : !formik.errors.email && formik.touched.email ? (
-                    <ValidationIcon 
-                    // src={SuccessImg} 
-                    alt="Success" />
-                ) : null}
-
             </ItemWrapp>
            
 
@@ -153,21 +143,11 @@ const formik = useFormik({
                     <Success>Field is not empty</Success>
                 ) : null}
 
-                {formik.errors.password ? (
-                    <ValidationIcon 
-                    // src={ErrorImg} 
-                    alt="error" />
-                ) : !formik.errors.password && formik.touched.password ? (
-                    <ValidationIcon 
-                    // src={SuccessImg} 
-                    alt="Success" />
-                ) : null}
-
+              
             </ItemWrapp>
 
             <SignUpBtn type="submit">
                 Sign Up
-                {/* <img style={{ marginLeft: 11 }} src={SignUp} alt="Sign up" /> */}
             </SignUpBtn>
         </form>
     )
@@ -175,3 +155,5 @@ const formik = useFormik({
 
 
 export default RegisterForm;
+
+
