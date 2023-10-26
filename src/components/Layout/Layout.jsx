@@ -1,19 +1,49 @@
-import React from 'react';
-import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
-import Loader from '../Loader/Loader';
+import { Outlet } from 'react-router-dom';
 
-// import ChatMap from '../ChatMap/ChatMap';
 
-export default function Layout() {
+import SideBar from 'components/SideBar/SideBar';
+import ChatList from 'components/ChatList/ChatList'
+import { Suspense } from 'react';
+import { Container, Wrapper } from './LayoutStyled';
+import { useEffect, useState } from 'react';
+
+import Loader from 'components/Loader/Loader';
+
+const Layout = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1440);
+
+  const handleSidebarOpen = () => {
+    if (window.innerWidth >= 1440) {
+      return;
+    }
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSidebarOpen(window.innerWidth >= 1440);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 16px' }}>
-   Loyout
-
-      <Suspense fallback={<Loader/>}>
-        <Outlet />
-      </Suspense>
-      
-      </div>
+    <Container>
+      <SideBar isOpen={sidebarOpen} onCloseClick={handleSidebarOpen} />
+      <ChatList/>
+      <Wrapper>
+        <Suspense fallback={< Loader/>}>
+          <Outlet />
+        </Suspense>
+       
+       
+      </Wrapper>
+    </Container>
   );
-}
+};
+
+export default Layout;

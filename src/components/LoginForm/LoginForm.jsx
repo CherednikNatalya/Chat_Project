@@ -27,7 +27,7 @@ let schema = yup.object().shape({
             'Invalid email address'
         )
         .required(),
-    password: yup.string().min(6).max(15).required(),
+    password: yup.string().min(4).max(15).required(),
 });
 
 const LoginForm = () => {
