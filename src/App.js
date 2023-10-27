@@ -12,7 +12,7 @@ import ChartPage from 'pages/ChartPage/ChartPage'
 import Layout from 'components/Layout/Layout';
 // import Page404 from 'page/Page404/Page404';
 import Loader from './components/Loader/Loader';
-import VerificationPage from 'pages/VerificationPage/VerificationPage'
+// import VerificationPage from 'pages/VerificationPage/VerificationPage'
 import PrivateRoute from 'PrivateRoute';
 import RestrictedRoute from 'RestrictedRoute';
 
@@ -26,7 +26,7 @@ export default function App() {
     <Route path="/" element={<Layout />}>
     <Route index element={
               <RestrictedRoute
-                redirectTo={`/account`}
+                redirectTo={`/chat`}
                 component={<MainPage />}
               />
             }
@@ -34,8 +34,7 @@ export default function App() {
       <Route path="/"
             element={
               <RestrictedRoute
-                redirectTo={`/account`}
-                component={<MainPage />}
+                redirectTo={`/chat`} component={<MainPage />}
               />
             }
           />
@@ -43,8 +42,7 @@ export default function App() {
             path="/login"
             element={
               <RestrictedRoute
-                redirectTo={`/account`}
-                component={<LoginPage />}
+                redirectTo={`/chat`} component={<LoginPage />}
               />
             }
           />
@@ -52,12 +50,11 @@ export default function App() {
             path="/register"
             element={
               <RestrictedRoute
-                redirectTo={`/account`}
-                component={<RegisterPage />}
+                redirectTo={`/chat`} component={<RegisterPage />}
               />
             }
           />
-       <Route path="/register/:token" element={<VerificationPage />} />;
+       {/* <Route path="/register/:token" element={<VerificationPage />} />; */}
        <Route
             path="/"
             element={

@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export const Wrapper = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
 
@@ -43,11 +43,11 @@ export const Wrapper = styled.div`
       font-size: 18px;
       line-height: calc(18 / 18);
     }
-  }
+  } */
 `;
 
 export const User = styled.p`
-  margin-bottom: 40px;
+  /* margin-bottom: 40px;
 
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -64,22 +64,22 @@ export const User = styled.p`
 
   @media screen and (min-width: 1440px) {
     margin-bottom: 44px;
-  }
+  } */
 `;
 
 export const Forms = styled(Form)`
-  position: relative;
+  /* position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media screen and (min-width: 768px) {
     position: unset;
-  }
+  } */
 `;
 
 export const BlockInput = styled.div`
-  position: relative;
+  /* position: relative;
 
   display: flex;
   flex-wrap: wrap;
@@ -106,7 +106,7 @@ export const BlockInput = styled.div`
   @media screen and (min-width: 1440px) {
     width: 758px;
     height: 264px;
-  }
+  } */
 `;
 
 export const Input = styled(Field)`

@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 import Loader from 'components/Loader/Loader';
 
-const Layout = () => {
+export default function Layout ()  {
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1440);
 
   const handleSidebarOpen = () => {
@@ -47,4 +47,3 @@ const Layout = () => {
   );
 };
 
-export default Layout;
