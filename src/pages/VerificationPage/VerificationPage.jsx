@@ -31,7 +31,7 @@ const VerificationPage = () => {
             <Container>
                 <Title>Congratulations!</Title>
                 <Text>You have successfully registered on our website!</Text>
-                <AppLink to='/calendar'>Starting to use our app</AppLink>
+                <AppLink to='/chat'>Starting to use our app</AppLink>
             </Container>
         </Background>
     )

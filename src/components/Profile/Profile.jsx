@@ -7,25 +7,25 @@ import { object, string,
 import { getUser } from 'redux-store/AuthOperations/selectors';
 import { updateUser } from 'redux-store/AuthOperations/AuthOperations';
 import {
-  ContainerImg,
+  // ContainerImg,
   Wrapper,
   Input,
-  DatePick,
+  // DatePick,
   Btn,
   BlockInput,
   Forms,
-  InputFile,
+  // InputFile,
 //   ImgBtn,
-  ImgAvatar,
+  // ImgAvatar,
   LabelBtn,
-  LabelImg,
+  // LabelImg,
   User,
-  SvgAvatar,
-  VectorPng,
+  // SvgAvatar,
+  // VectorPng,
   Message,
 } from './ProfileStyled';
 // import plus from '../../images/icons/plus.png';
-import Icon from '../../images/sprite.svg';
+// import Icon from '../../images/sprite.svg';
 
 const validationFormikSchema = object({
   name: string().max(40, 'too long!').required(),
@@ -38,7 +38,7 @@ const validationFormikSchema = object({
 
 const Profile = () => {
   const { user } = useSelector(getUser);
-  const [avatarURL, setAvatarURL] = useState(null);
+  // const [avatarURL, setAvatarURL] = useState(null);
   const [initialValues, setInitialValues] = useState({
     name: '',
     // phone: '',
@@ -53,10 +53,9 @@ const Profile = () => {
       name: user ? user.name : '',
       email: user ? user.email : '',
     //   phone: user ? user.phone : '',
-    //   skype: user ? user.skype : '',
     //   birthday: user.birthday ? new Date(user.birthday) : new Date(),
     };
-    setAvatarURL(user.avatarURL);
+    // setAvatarURL(user.avatarURL);
     setInitialValues({ ...data });
   }, [user]);
 
@@ -64,17 +63,15 @@ const Profile = () => {
     const formData = new FormData();
     formData.append('name', values.name);
     formData.append('email', values.email);
-    if (values.phone) {
-      formData.append('phone', values.phone);
-    }
-    if (values.skype) {
-      formData.append('skype', values.skype);
-    }
-    formData.append('birthday', values.birthday);
+    // if (values.phone) {
+    //   formData.append('phone', values.phone);
+    // }
+  
+    // formData.append('birthday', values.birthday);
 
-    if (avatarURL !== avatarURL.toString()) {
-      formData.append('avatar', avatarURL);
-    }
+    // if (avatarURL !== avatarURL.toString()) {
+    //   formData.append('avatar', avatarURL);
+    // }
 
     await dispatch(updateUser(formData));
 
@@ -99,7 +96,8 @@ const Profile = () => {
           touched,
         }) => (
           <Forms autoComplete="off" onSubmit={handleSubmit}>
-            <ContainerImg>
+
+            {/* <ContainerImg>
               {avatarURL && avatarURL === avatarURL.toString() ? (
                 <ImgAvatar src={avatarURL} alt="avatar" />
               ) : avatarURL ? (
@@ -113,7 +111,6 @@ const Profile = () => {
               )}
 
               <LabelImg htmlFor="avatar">
-                {/* <ImgBtn src={plus} alt="user" /> */}
 
                 <InputFile
                   id="avatar"
@@ -129,7 +126,8 @@ const Profile = () => {
                   }}
                 </ErrorMessage>
               </LabelImg>
-            </ContainerImg>
+            </ContainerImg> */}
+            
             <h2>{user?.name} </h2>
             <User>User</User>
             <BlockInput>
@@ -149,7 +147,7 @@ const Profile = () => {
                 </ErrorMessage>
               </LabelBtn>
 
-              <LabelBtn htmlFor="phone">
+              {/* <LabelBtn htmlFor="phone">
                 <p>Phone</p>
                 <Input
                   type="tel"
@@ -163,9 +161,10 @@ const Profile = () => {
                 <ErrorMessage name="phone">
                   {msg => <Message>{msg}</Message>}
                 </ErrorMessage>
-              </LabelBtn>
+              </LabelBtn> */}
 
-              <LabelBtn htmlFor="birthday">
+
+              {/* <LabelBtn htmlFor="birthday">
                 <p>Birthday</p>
                 <DatePick
                   type="date"
@@ -180,33 +179,19 @@ const Profile = () => {
                   }}
                   placeholder="Birthday"
                   dateFormat="dd/MM/yyyy"
-                />
+                /> */}
 
-                <VectorPng>
+
+                {/* <VectorPng>
                   <use href={Icon + '#icon-chevron-right'}></use>
                 </VectorPng>
 
                 <ErrorMessage name="birthday">
                   {msg => <Message>{msg}</Message>}
-                </ErrorMessage>
-              </LabelBtn>
+                </ErrorMessage> */}
+              {/* </LabelBtn> */}
 
-              <LabelBtn htmlFor="skype">
-                <p>Skype</p>
-                <Input
-                  type="text"
-                  name="skype"
-                  id="skype"
-                  placeholder="Skype"
-                  value={values.skype ? values.skype : ''}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                <ErrorMessage name="skype">
-                  {msg => <Message>{msg}</Message>}
-                </ErrorMessage>
-              </LabelBtn>
-
+              
               <LabelBtn htmlFor="email">
                 <p>Email</p>
                 <Input

@@ -37,7 +37,7 @@ export const register = createAsyncThunk('auth/register', async userData => {
 
 export const logIn = createAsyncThunk('auth/login', async userData => {
   try {
-    const response = await axios.post('/api/authentication/login', userData);
+    const response = await axios.post('/authentication/login', userData);
     token.set(response.data.token);
     console.log(response);
 
@@ -84,10 +84,10 @@ export const fetchCurrentUser = createAsyncThunk(
 );
 
 export const updateUser = createAsyncThunk(
-  'auth/update',
+  'user/update',
   async (user, thunkAPI) => {
     try {
-      const { data } = await axios.patch('auth/updateUser', user);
+      const { data } = await axios.put('/api/users', user);
 
       return data.user;
     } catch (error) {
