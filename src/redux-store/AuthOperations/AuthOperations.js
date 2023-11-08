@@ -2,8 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import swal from 'sweetalert';
 
-
-axios.defaults.baseURL = "http://talk-and-travel.us-east-1.elasticbeanstalk.com";
+axios.defaults.baseURL ='http://talk-and-travel-app.us-east-1.elasticbeanstalk.com';
 
 export const token = {
   set(token) {
@@ -16,9 +15,19 @@ export const token = {
 
 export const register = createAsyncThunk('auth/register', async userData => {
   try {
-    const response = await axios.post('/api/authentication/register', userData);
+      const response = await axios.post(
+      '/api/authentication/register',
+      userData,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      }
+    );
+
     token.set(response.data.token);
     console.log(response);
+    console.log('data', response.data);
 
     swal('Success!', 'Letter with verification sent on your email', 'success');
 
@@ -37,7 +46,16 @@ export const register = createAsyncThunk('auth/register', async userData => {
 
 export const logIn = createAsyncThunk('auth/login', async userData => {
   try {
-    const response = await axios.post('/authentication/login', userData);
+    // const response = await axios.post('/authentication/login', userData);
+    const response = await axios.post(
+      '/authentication/login',
+      userData,
+      {
+        headers: {
+          'Content-Type': 'application/json' 
+        },
+      }
+    );
     token.set(response.data.token);
     console.log(response);
 
