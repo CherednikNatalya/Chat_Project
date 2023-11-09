@@ -10,9 +10,9 @@ import {
 const initialState = {
   token: null,
   user: {
-    name: '',
-    email: '',
-    avatarUrl: '',
+    userName: '',
+    userEmail: '',
+    avatar: '',
     // birthday: '',
     // phone: '',
   },
@@ -40,15 +40,18 @@ export const authSlice = createSlice({
       .addCase(register.pending, handlePending)
       .addCase(register.rejected, handleRejected)
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.token = action.payload.token;
+        state.isLoggedIn = true;
+        console.log('register action', action)
       })
 
       .addCase(logIn.pending, handlePending)
       .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.token = action.payload.token;
+        console.log('login action', action);
         state.isLoggedIn = true;
         state.error = null;
       })
@@ -56,7 +59,7 @@ export const authSlice = createSlice({
       .addCase(logOut.pending, handlePending)
       .addCase(logOut.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.user = { userName: null, userEmail: null };
         state.token = null;
         state.isLoggedIn = false;
         state.isRefresh = false;
