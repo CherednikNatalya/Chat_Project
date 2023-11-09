@@ -1,159 +1,144 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { register } from 'redux-store/AuthOperations/AuthOperations';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import {
-    ItemWrapp,
-    StyledLabel,
-    Error,
-    Success,
-    // ValidationIcon,
-    StyledInput,
-    SignUpBtn,
-} from './RegisterForm.styled'
-
+  ItemWrapp,
+  StyledLabel,
+  Error,
+  Success,
+  // ValidationIcon,
+  StyledInput,
+  SignUpBtn,
+} from './RegisterForm.styled';
 
 let schema = yup.object().shape({
-    name: yup
-        .string()
-        .transform(value => (value ? value.trim() : ''))
-        .min(2, 'Name must be more then 1 symbol')
-        .max(30, 'To long')
-        .matches(/^[a-zA-Z0-9 ]{2,30}$/, 'Invalid name')
-        .required(),
-    email: yup
-        .string()
-        .transform(value => (value ? value.trim() : ''))
-        .email()
-        .matches(
-            /^([a-z0-9_.-]+)@([a-z09_.-]+).([a-z]{2,6})$/,
-            'Invalid email address'
-        )
-        .required(),
-    password: yup.string().min(8).max(30).required(),
+  userName: yup
+    .string()
+    .transform(value => (value ? value.trim() : ''))
+    .min(2, 'Name must be more then 1 symbol')
+    .max(30, 'To long')
+    .matches(/^[a-zA-Z0-9 ]{2,30}$/, 'Invalid name')
+    .required(),
+  userEmail: yup
+    .string()
+    .transform(value => (value ? value.trim() : ''))
+    .email()
+    .matches(
+      /^([a-z0-9_.-]+)@([a-z09_.-]+).([a-z]{2,6})$/,
+      'Invalid email address'
+    )
+    .required(),
+  password: yup.string().min(8).max(30).required(),
 });
 
-const  RegisterForm  = () => {
+const RegisterForm = () => {
+  const dispatch = useDispatch();
 
-const dispatch = useDispatch();
-
-
-const formik = useFormik({
+  const formik = useFormik({
     initialValues: {
-        name: '',
-        email: '',
-        password: '',
+      userName: '',
+      userEmail: '',
+      password: '',
     },
     validationSchema: schema,
     validateOnChange: false,
     onSubmit: (values, { resetForm }) => {
-        dispatch(register(values)); 
-       
-        localStorage.setItem(
-            'verify',
-            JSON.stringify({ email: values.email, password: values.password })
-        );
+      dispatch(register(values));
 
-        resetForm();
+      localStorage.setItem(
+        'verify',
+        JSON.stringify({ userEmail: values.email, password: values.password })
+      );
+
+      resetForm();
     },
-});
+  });
 
+  return (
+    <form onSubmit={formik.handleSubmit} autoComplete="off">
+      <ItemWrapp>
+        <StyledLabel
+          color={{ error: formik.errors.name, touched: formik.touched.name }}
+          htmlFor="Name"
+        >
+          Name
+        </StyledLabel>
+        <StyledInput
+          id="name"
+          name="userName"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.name}
+          placeholder="Enter your name"
+          color={{ error: formik.errors.name, touched: formik.touched.name }}
+        />
 
-    return (
-        <form onSubmit={formik.handleSubmit}  autoComplete="off">
-            <ItemWrapp>
-                <StyledLabel
-                    color={{ error: formik.errors.name, touched: formik.touched.name }}
-                    htmlFor="Name"
-                >
-                    Name
-                </StyledLabel>
-                <StyledInput
-                    id="name"
-                    name="name"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.name}
-                    placeholder="Enter your name"
-                    color={{ error: formik.errors.name, touched: formik.touched.name }}
-                />
+        {formik.errors.name ? (
+          <Error>{formik.errors.name}</Error>
+        ) : !formik.errors.name && formik.touched.name ? (
+          <Success>Field is not empty</Success>
+        ) : null}
+      </ItemWrapp>
 
-                {formik.errors.name ? (
-                    <Error>{formik.errors.name}</Error>
-                ) : !formik.errors.name && formik.touched.name ? (
-                    <Success>Field is not empty</Success>
-                ) : null}
+      <ItemWrapp>
+        <StyledLabel
+          color={{ error: formik.errors.email, touched: formik.touched.email }}
+          htmlFor="email"
+        >
+          Email
+        </StyledLabel>
+        <StyledInput
+          id="email"
+          name="userEmail"
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          placeholder="Enter email"
+          color={{ error: formik.errors.email, touched: formik.touched.email }}
+        />
 
-             
-            </ItemWrapp>
+        {formik.errors.email ? (
+          <Error>{formik.errors.email}</Error>
+        ) : !formik.errors.email && formik.touched.email ? (
+          <Success>Field is not empty</Success>
+        ) : null}
+      </ItemWrapp>
 
-            <ItemWrapp>
-                <StyledLabel
-                    color={{ error: formik.errors.email, touched: formik.touched.email }}
-                    htmlFor="email"
-                >
-                    Email
-                </StyledLabel>
-                <StyledInput
-                    id="email"
-                    name="email"
-                    type="email"
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                    placeholder="Enter email"
-                    color={{ error: formik.errors.email, touched: formik.touched.email }}
-                />
+      <ItemWrapp>
+        <StyledLabel
+          color={{
+            error: formik.errors.password,
+            touched: formik.touched.password,
+          }}
+          htmlFor="password"
+        >
+          Password
+        </StyledLabel>
+        <StyledInput
+          id="password"
+          name="password"
+          type="password"
+          onChange={formik.handleChange}
+          value={formik.values.password}
+          placeholder="Enter password"
+          color={{
+            error: formik.errors.password,
+            touched: formik.touched.password,
+          }}
+          style={{ marginBottom: 32 }}
+        />
 
-                {formik.errors.email ? (
-                    <Error>{formik.errors.email}</Error>
-                ) : !formik.errors.email && formik.touched.email ? (
-                    <Success>Field is not empty</Success>
-                ) : null}
+        {formik.errors.password && formik.touched.password ? (
+          <Error>{formik.errors.password}</Error>
+        ) : !formik.errors.password && formik.touched.password ? (
+          <Success>Field is not empty</Success>
+        ) : null}
+      </ItemWrapp>
 
-            </ItemWrapp>
-           
-
-            <ItemWrapp>
-                <StyledLabel
-                    color={{
-                        error: formik.errors.password,
-                        touched: formik.touched.password,
-                    }}
-                    htmlFor="password"
-                >
-                    Password
-                </StyledLabel>
-                <StyledInput
-                    id="password"
-                    name="password"
-                    type="password"
-                    onChange={formik.handleChange}
-                    value={formik.values.password}
-                    placeholder="Enter password"
-                    color={{
-                        error: formik.errors.password,
-                        touched: formik.touched.password,
-                    }}
-                    style={{ marginBottom: 32 }}
-                />
-
-                {formik.errors.password && formik.touched.password ? (
-                    <Error>{formik.errors.password}</Error>
-                ) : !formik.errors.password && formik.touched.password ? (
-                    <Success>Field is not empty</Success>
-                ) : null}
-
-              
-            </ItemWrapp>
-
-            <SignUpBtn type="submit">
-                Sign Up
-            </SignUpBtn>
-        </form>
-    )
-}
-
+      <SignUpBtn type="submit">Sign Up</SignUpBtn>
+    </form>
+  );
+};
 
 export default RegisterForm;
-
-
