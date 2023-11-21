@@ -1,7 +1,9 @@
 import { Outlet } from 'react-router-dom';
 
 import SideBar from 'components/SideBar/SideBar';
-import ChatList from 'components/ChatList/ChatList'
+import SearchBar from 'components/SearchBar/SearchBar';
+import ChatList from 'components/ChatList/ChatList';
+// import Map from 'components/Map/Map';
 import { Suspense } from 'react';
 import { Container, Wrapper } from './LayoutStyled';
 import { useEffect, useState } from 'react';
@@ -34,7 +36,9 @@ export default function Layout ()  {
     <>
     <Container>
       <SideBar isOpen={sidebarOpen} onCloseClick={handleSidebarOpen} />
+      <SearchBar />
       <ChatList/>
+      {/* <Map /> */}
       <Wrapper>
         <Suspense fallback={< Loader/>}>
           <Outlet />

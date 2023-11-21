@@ -7,7 +7,8 @@ export const Wrapper = styled.div`
     align-items: center;
     width: 120px;
     height: 100vh;
-    background: #f4f4f4;
+    border-right: 1px solid #c8c8c8;
+    background: #ffffff;
 `; 
 
 export const ProfileBox = styled.div`
