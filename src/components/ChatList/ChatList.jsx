@@ -1,10 +1,11 @@
-
+import React from 'react';
+import { Wrapper } from './ChatListStyled';
 
 export default function ChatList() {
     return (
-      <div>
+      <Wrapper>
        ChatList
-      </div>
+      </Wrapper>
     );
   }
   

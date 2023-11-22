@@ -3,7 +3,6 @@ import { MapContainer } from 'react-leaflet/MapContainer';
 import { GeoJSON } from 'react-leaflet';
 import mapData from '../../data/countries.json';
 import 'leaflet/dist/leaflet.css';
-
 import '../../css/ChatMap.css';
 
 // import { TileLayer } from 'react-leaflet/TileLayer';
@@ -48,7 +47,7 @@ export default function ChatMap() {
 
   return (
     <div className="map-container">
-      <h1>Join to the room: </h1>
+      <h1>Alternative world map</h1>
       <MapContainer
         style={{ width: "1000px", height: "700px" }}
         zoom={2}
