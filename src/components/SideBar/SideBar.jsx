@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Wrapper,
   ProfileBox,
@@ -36,7 +35,7 @@ export default function SideBar() {
           onClick={handleProfileOpen}
           src=""
           alt="Profile Avatar"
-        />
+        ></ProfileBoxAvatar>
         <Text>Anton</Text>
       </ProfileBox>
       <Frame>
