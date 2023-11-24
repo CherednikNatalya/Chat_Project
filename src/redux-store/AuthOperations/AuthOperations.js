@@ -25,7 +25,6 @@ export const register = createAsyncThunk('auth/register', async userData => {
       userData,
       {
         headers: {
-          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         },
       }
