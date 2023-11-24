@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import swal from 'sweetalert';
 
 
-
+// http://talk-and-travel-app.us-east-1.elasticbeanstalk.com/api/authentication/register 
 axios.defaults.baseURL ='http://talk-and-travel-app.us-east-1.elasticbeanstalk.com';
 
 
@@ -25,6 +25,7 @@ export const register = createAsyncThunk('auth/register', async userData => {
       userData,
       {
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         },
       }
