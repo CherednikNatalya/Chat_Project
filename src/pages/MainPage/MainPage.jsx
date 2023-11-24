@@ -1,17 +1,27 @@
 import React from 'react';
-import { useState } from "react";
-import RegisterPage from '../RegisterPage/RegisterPage';
+
+import { useNavigate } from 'react-router-dom';
 
 export default function MainPage() {
-  const [show, setShow] = useState(true);
+  const navigate = useNavigate();
+
+  const handleRegisterOpen = () => {
+    navigate('/register');
+  };
+
+  const handleLoginOpen = () => {
+    navigate('/login');
+  };
 
   return (
     <div>
       <h2>MainPage</h2>
-      <button onClick={() => setShow(!show)}>
+      <button onClick={handleRegisterOpen}>
         Sign up
       </button>
-      {show ? <RegisterPage /> : null}
+      <button onClick={handleLoginOpen}>
+        Login
+      </button>
     </div>
   );
 }
