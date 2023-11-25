@@ -6,8 +6,8 @@
 }
 
 .leaflet-container {
-    background: #3b66b4;
-    border: 2px solid #140951;
-    border-radius: 10px;
+    background: #c8c8c8;
+    border-radius: 32px;
+    box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.15);
 }
 
