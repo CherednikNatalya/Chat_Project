@@ -12,7 +12,7 @@ import '../../css/ChatMap.css';
 export default function ChatMap() {
   console.log(mapData);
 
-  let color = ['#ffd500', '#ffdc2e', '#ffe761', '#ffea76', '#fff394'];
+  let color = ['#e9f0fb', '#cbdbf4', '#a1bfec', '#76a1e3', '#4c85da', '#256ad2', '#1f5ab3', '#1a4b95', '#153c78', '#11305e'];
 
   const countryStyle = {
     fillOpacity: 1,
@@ -47,10 +47,9 @@ export default function ChatMap() {
 
   return (
     <div className="map-container">
-      <h1>Alternative world map</h1>
       <MapContainer
-        style={{ width: "1000px", height: "700px" }}
-        zoom={2}
+        style={{ width: "1150px", height: "750px" }}
+        zoom={2.3}
         center={[40, 0]}
       >
         <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry}/>

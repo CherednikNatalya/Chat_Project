@@ -133,7 +133,8 @@ const RegisterForm = () => {
           <Error>{formik.errors.password}</Error>
         ) : !formik.errors.password && formik.touched.password ? (
           <Success>Field is not empty</Success>
-        ) : null}
+        ) : 
+        null}
       </ItemWrapp>
 
       <SignUpBtn type="submit">Sign Up</SignUpBtn>
