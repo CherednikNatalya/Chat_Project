@@ -40,7 +40,7 @@ export const authSlice = createSlice({
       .addCase(register.pending, handlePending)
       .addCase(register.rejected, handleRejected)
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.userDto;
+        state.userDto = action.payload.userDto;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         console.log('register action', action)
@@ -49,7 +49,7 @@ export const authSlice = createSlice({
       .addCase(logIn.pending, handlePending)
       .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.userDto;
+        state.userDto = action.payload.userDto;
         state.token = action.payload.token;
         console.log('login action', action);
         state.isLoggedIn = true;
@@ -59,7 +59,7 @@ export const authSlice = createSlice({
       .addCase(logOut.pending, handlePending)
       .addCase(logOut.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
-        state.user = { userName: null, userEmail: null };
+        state.userDto = { userName: null, userEmail: null };
         state.token = null;
         state.isLoggedIn = false;
         state.isRefresh = false;
@@ -68,12 +68,12 @@ export const authSlice = createSlice({
       .addCase(fetchCurrentUser.pending, handlePending)
       .addCase(fetchCurrentUser.rejected, handleRejected)
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.userDto = action.payload.userDto;
         state.isLoggedIn = true;
         state.isRefresh = false;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = { ...state.user, ...action.payload };
+        state.userDto = { ...state.userDto, ...action.payload };
       }),
 });
 
