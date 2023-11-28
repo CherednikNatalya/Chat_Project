@@ -49,7 +49,7 @@ export default function ChatMap() {
     <div className="map-container">
       <MapContainer
         style={{ width: "1150px", height: "750px" }}
-        zoom={2.4}
+        zoom={2.3}
         center={[40, 0]}
       >
         <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry}/>
