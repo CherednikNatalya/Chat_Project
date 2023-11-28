@@ -3,11 +3,45 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .leaflet-container {
-    background: #3b66b4;
-    border: 2px solid #140951;
-    border-radius: 10px;
+    position: relative;
+    background: #ffffff;
+    border-radius: 32px;
+    box-shadow: -1px 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
+.leaflet-control-zoom {
+    position: absolute;
+    top: 696px;
+    left: 533px;
+}
+
+.leaflet-bar {
+    display: flex;
+}
+
+.leaflet-touch .leaflet-bar a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.leaflet-bar a:first-child {
+    border-right: 1px solid #ccc;
+    border-bottom: none;
+}
+
+.leaflet-left .leaflet-control {
+    margin-left: 0;
+}
+
+.leaflet-top .leaflet-control {
+    margin-top: 0;
+}
+
+/* .leaflet-popup-content-wrapper {
+    background: #96b7ea;
+} */
