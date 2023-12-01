@@ -1,11 +1,13 @@
-import { createGlobalStyle } from '';
+import { createGlobalStyle } from 'styled-components';
+
 export const GlobalStyles = createGlobalStyle`
-styled-components
+/* styled-components */
 
 /* !!!Додати стилі після затвердження макету!!! */
 
-/* :root {
+:root {
   --white-color: #ffffff;
+  --red-color: red;
   --button-bgd-color: #3e85f3;
   --color-task-low-priority: #3e85f3;
   --bgc-task-low-priority: #ceeefd;
@@ -13,6 +15,34 @@ styled-components
   --bgc-task-medium-priority: #fcf0d4;
   --color-task-high-priority: #ea3d65;
   --bgc-task-high-priority: #ffd2dd; 
+
+  --color-success: #33d844;
+  --color-error: #d83333;
+  --color-info: #569aff;
+
+  --color-grey-2: #fdfdfd;
+  --color-grey-3: #f6f6f6;
+  --color-grey-4: #f2f2f2;
+  --color-grey-5: #dedede;
+  --color-grey-6: #c8c8c8;
+  --color-grey-7: #9c9c9c;
+  --color-grey-8: #6f6f6f;
+  --color-grey-9: #5e5e5e;
+  --color-grey-10: #434343;
+  --color-grey-11: #3d3d3d;
+  --color-grey-12: #343434;
+  --color-dark: #222222;
+
+  --color-blue-1: #e9f0fb;
+  --color-blue-2: #cbdbf4;
+  --color-blue-3: #a1bfec;
+  --color-blue-4: #76a1e3;
+  --color-blue-5: #4c85da;
+  --color-brand-blue: #256ad2;
+  --color-blue-7: #1f5ab3;
+  --color-blue-8: #1a4b95;
+  --color-blue-9: #153c78;
+  --color-blue-10: #11305e;
 }
 
 @font-face {

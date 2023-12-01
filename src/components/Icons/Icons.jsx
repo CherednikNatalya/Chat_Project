@@ -2,12 +2,12 @@ import React from 'react';
 import sprite from '../../images/sprite.svg';
 import PropTypes from 'prop-types';
 
-function Icons({ name, color, size }) {
+function Icons({ name, fill, stroke, size }) {
   return (
     <svg
       className="icon"
-      fill={color}
-      stroke={color}
+      fill={fill}
+      stroke={stroke}
       width={size}
       height={size}
     >
@@ -18,8 +18,9 @@ function Icons({ name, color, size }) {
 
 Icons.propTypes = {
   name: PropTypes.string,
-  color: PropTypes.string,
-  size: PropTypes.string,
+  fill: PropTypes.string,
+  stroke: PropTypes.string,
+  size: PropTypes.string
 };
 
 export default Icons;

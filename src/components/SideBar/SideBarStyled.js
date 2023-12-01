@@ -5,10 +5,11 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 120px;
+    min-width: 120px;
     height: 100vh;
     border-right: 1px solid #c8c8c8;
-    background: #ffffff;
+    /* background: #E9F0FB; */
+    background: var(--color-blue-1);
 `; 
 
 export const ProfileBox = styled.div`
@@ -22,29 +23,22 @@ export const ProfileBox = styled.div`
     cursor: pointer;
 `; 
 
-export const ProfileBoxAvatar = styled.div`
+/* export const ProfileBoxAvatar = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 48px;
     height: 48px;
-    border-radius: 4px;
-    background: #c6c6c6;
-`; 
+    border: 1px solid #222222;
+`; */
 
 export const Frame = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 48px;
-    height: 276px;
-`; 
-
-export const FrameBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 56px;
-    height: 76px;
+    width: 51px;
+    height: 166px;
 `; 
 
 export const LogOutBox = styled.div`
@@ -57,21 +51,12 @@ export const LogOutBox = styled.div`
     margin-bottom: 48px;
 `; 
 
-export const Text = styled.p`
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: -0.011em;
-    text-align: left;
-    margin: 0;
-`;
 
-export const LogOutButton = styled.button`
+/* export const LogOutButton = styled.button`
     width: 48px;
     height: 48px;
     border-radius: 4px;
     background: #c6c6c6;
     border: none;
     cursor: pointer;
-`; 
+`; */

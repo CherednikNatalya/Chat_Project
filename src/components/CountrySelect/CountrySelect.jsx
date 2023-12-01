@@ -32,7 +32,7 @@ export default function CountrySelect() {
       renderInput={params => (
         <>
           <ButtonSearch onClick={handleSearch}>
-            <Icons name='search' color='#9c9c9c' size='16' />
+            <Icons name='search' fill='#9c9c9c' size='16' />
           </ButtonSearch>
           <TextFieldInput
             {...params}
