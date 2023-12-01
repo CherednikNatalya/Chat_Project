@@ -19,7 +19,7 @@ let schema = yup.object().shape({
     .min(2, 'Name must be more then 1 symbol')
     .max(30, 'To long')
     .matches(/^[a-zA-Z0-9 ]{2,30}$/, 'Invalid name')
-    .required(),
+    .required('The field is empty'),
   userEmail: yup
     .string()
     .transform(value => (value ? value.trim() : ''))
@@ -28,8 +28,16 @@ let schema = yup.object().shape({
       /^([a-z0-9_.-]+)@([a-z09_.-]+).([a-z]{2,6})$/,
       'Invalid email address'
     )
-    .required(),
-  password: yup.string().min(8).max(30).required(),
+    .required('The field is empty'),
+  password: yup
+    .string()
+    .min(8, 'password must contain 8 or more characters with at least one of each: uppercase, lowercase, number and special')
+    .max(30, 'To long')
+    .matches(/(?=.*[a-z])/, 'password must contain at least 1 lower case letter')
+    .matches(/(?=.*[A-Z])/, 'password must contain at least 1 upper case letter')
+    .matches(/(?=.*[0-9])/, 'password must contain at least 1 number')
+    .matches(/(?=.*[!@#$%^&*])/, 'password must contain at least 1 special character')
+    .required('The field is empty'),
 });
 
 const RegisterForm = () => {
@@ -59,48 +67,48 @@ const RegisterForm = () => {
     <form onSubmit={formik.handleSubmit} autoComplete="off">
       <ItemWrapp>
         <StyledLabel
-          color={{ error: formik.errors.name, touched: formik.touched.name }}
+          color={{ error: formik.errors.userName, touched: formik.touched.userName }}
           htmlFor="Name"
         >
           Name
         </StyledLabel>
         <StyledInput
-          id="name"
+          id="userName"
           name="userName"
           type="text"
           onChange={formik.handleChange}
-          value={formik.values.name}
+          value={formik.values.userName}
           placeholder="Enter your name"
-          color={{ error: formik.errors.name, touched: formik.touched.name }}
+          color={{ error: formik.errors.userName, touched: formik.touched.userName }}
         />
 
-        {formik.errors.name ? (
-          <Error>{formik.errors.name}</Error>
-        ) : !formik.errors.name && formik.touched.name ? (
+        {formik.errors.userName ? (
+          <Error>{formik.errors.userName}</Error>
+        ) : !formik.errors.userName && formik.touched.userName ? (
           <Success>Field is not empty</Success>
         ) : null}
       </ItemWrapp>
 
       <ItemWrapp>
         <StyledLabel
-          color={{ error: formik.errors.email, touched: formik.touched.email }}
+          color={{ error: formik.errors.userEmail, touched: formik.touched.userEmail }}
           htmlFor="email"
         >
           Email
         </StyledLabel>
         <StyledInput
-          id="email"
+          id="userEmail"
           name="userEmail"
           type="email"
           onChange={formik.handleChange}
-          value={formik.values.email}
+          value={formik.values.userEmail}
           placeholder="Enter email"
-          color={{ error: formik.errors.email, touched: formik.touched.email }}
+          color={{ error: formik.errors.userEmail, touched: formik.touched.userEmail }}
         />
 
-        {formik.errors.email ? (
-          <Error>{formik.errors.email}</Error>
-        ) : !formik.errors.email && formik.touched.email ? (
+        {formik.errors.userEmail ? (
+          <Error>{formik.errors.userEmail}</Error>
+        ) : !formik.errors.userEmail && formik.touched.userEmail ? (
           <Success>Field is not empty</Success>
         ) : null}
       </ItemWrapp>

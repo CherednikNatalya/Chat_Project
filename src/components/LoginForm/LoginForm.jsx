@@ -26,8 +26,12 @@ let schema = yup.object().shape({
       /^([a-z0-9_.-]+)@([a-z09_.-]+).([a-z]{2,6})$/,
       'Invalid email address'
     )
-    .required(),
-  password: yup.string().min(4).max(15).required(),
+    .required('The field is empty'),
+  password: yup
+    .string()
+    .min(8)
+    .max(30)
+    .required('The field is empty'),
 });
 
 const LoginForm = () => {
@@ -51,33 +55,33 @@ const LoginForm = () => {
     <form onSubmit={formik.handleSubmit} autoComplete="off">
       <ItemWrapp>
         <StyledLabel
-          color={{ error: formik.errors.email, touched: formik.touched.email }}
+          color={{ error: formik.errors.userEmail, touched: formik.touched.userEmail }}
           htmlFor="email"
         >
           Email
         </StyledLabel>
         <StyledInput
-          id="email"
+          id="userEmail"
           name="userEmail"
           type="email"
           onChange={formik.handleChange}
-          value={formik.values.email}
+          value={formik.values.userEmail}
           placeholder="Enter email"
-          color={{ error: formik.errors.email, touched: formik.touched.email }}
+          color={{ error: formik.errors.userEmail, touched: formik.touched.userEmail }}
         />
 
-        {formik.errors.email ? (
-          <Error>{formik.errors.email}</Error>
-        ) : !formik.errors.email && formik.touched.email ? (
+        {formik.errors.userEmail ? (
+          <Error>{formik.errors.userEmail}</Error>
+        ) : !formik.errors.userEmail && formik.touched.userEmail ? (
           <Success>Field is not empty</Success>
         ) : null}
 
-        {formik.errors.email ? (
+        {formik.errors.userEmail ? (
           <ValidationIcon
             // src={ErrorImg}
             alt="error"
           />
-        ) : !formik.errors.email && formik.touched.email ? (
+        ) : !formik.errors.userEmail && formik.touched.userEmail ? (
           <ValidationIcon
             // src={SuccessImg}
             alt="Success"
