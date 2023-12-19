@@ -36,6 +36,7 @@ export default function ChatMap() {
         e.target.setStyle({
           color: '#ffffff'
         });
+        // layer.openPopup();
       },
       mouseout: (e) => {
         e.target.setStyle({
