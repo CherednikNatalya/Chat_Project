@@ -7,7 +7,7 @@ import MainPage from 'pages/MainPage/MainPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import AccountPage from 'pages/AccountPage/AccountPage';
-import ChartPage from 'pages/ChartPage/ChartPage'
+import ChatPage from 'pages/ChatPage/ChatPage'
 import Layout from 'components/Layout/Layout';
 // import Page404 from 'page/Page404/Page404';
 import Loader from './components/Loader/Loader';
@@ -63,7 +63,7 @@ export default function App() {
 
 
       <Route path='/account' element={<AccountPage/>}/>
-      <Route path='/chat' element={<ChartPage/>}/>
+      <Route path='/chat' element={<ChatPage/>}/>
       {/* <Route path="*" element={<Page404/>} /> */}
       </Route>
 

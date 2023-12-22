@@ -1,18 +1,19 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 
 import { Wrapper, Text, ButtonMapOpen, MapBox } from './SearchBarStyled';
 import SearchInput from '../SearchInput/SearchInput';
-import ChatList from '../ChatList/ChatList';
+import DMsList from '../DMsList/DMsList';
+import RoomsList from '../RoomsList/RoomsList';
 import ChatMap from '../ChatMap/ChatMap';
 // import PropTypes from 'prop-types'
 
-export default function SearchBar(props) {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+export default function SearchBar() {
+  const [openMap, setOpenMap] = useState(false);
+  const handleOpen = () => setOpenMap(true);
+  const handleClose = () => setOpenMap(false);
 
   return (
     <Wrapper>
@@ -22,11 +23,12 @@ export default function SearchBar(props) {
         There are no rooms in the list.
         <br /> Find chat of a country and it will be shown here
       </Text>
-      <ChatList />
+      <DMsList />
+      <RoomsList />
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={open}
+        open={openMap}
         onClose={handleClose}
         closeAfterTransition
         slots={{ backdrop: Backdrop }}
@@ -36,7 +38,7 @@ export default function SearchBar(props) {
           },
         }}
       >
-        <Fade in={open}>
+        <Fade in={openMap}>
           <MapBox>
             <ChatMap />
           </MapBox>

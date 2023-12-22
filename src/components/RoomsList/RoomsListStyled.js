@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 100%;
+  width: 300px;
   height: 100vh;
-  background: #eaeaea;
+  background: var(--color-blue-4);
 `;
