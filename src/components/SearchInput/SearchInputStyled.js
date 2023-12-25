@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const AutocompleteInputWrapper = styled.div`
   position: relative;
+  min-width: 100%;
 `;
 
 export const AutocompleteInput = styled.input`
   box-sizing: border-box;
-  width: 268px;
+  min-width: 100%;
   height: 35px;
   margin-bottom: 25px;
   padding: 1px 10px 0 40px;

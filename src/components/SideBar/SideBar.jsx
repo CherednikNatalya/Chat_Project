@@ -28,11 +28,11 @@ export default function SideBar() {
     console.log('clicked logout', event);
   };
 
-  const handleDmsClick = () => {
+  const handleOpenDms = (open) => {
     console.log('DMs clicked');
   };
 
-  const handleRoomsClick = () => {
+  const handleOpenRooms = (open) => {
     console.log('Rooms clicked');
   };
 
@@ -51,7 +51,7 @@ export default function SideBar() {
           onClick={handleProfileOpen}
           alt="Photo icon"
           name="photo-icon"
-          fill="#222222"
+          fill="var(--color-dark)"
           size="24"
         >
           Anton
@@ -59,19 +59,19 @@ export default function SideBar() {
       </ProfileBox>
       <Frame>
         <SideBarItem
-          onClick={handleDmsClick}
+          onClick={handleOpenDms}
           alt="DMs icon"
           name="dms"
-          fill="#222222"
+          fill="var(--color-dark)"
           size="24"
         >
           DMs
         </SideBarItem>
         <SideBarItem
-          onClick={handleRoomsClick}
+          onClick={handleOpenRooms}
           alt="Rooms icon"
           name="rooms"
-          fill="#222222"
+          fill="var(--color-dark)"
           size="24"
         >
           Rooms
@@ -92,7 +92,7 @@ export default function SideBar() {
           onClick={handleLogOut}
           alt="Logout icon"
           name="logout"
-          fill="#222222"
+          fill="var(--color-dark)"
           size="24"
         >
           LogOut
