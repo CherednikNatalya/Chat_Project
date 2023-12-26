@@ -2,6 +2,8 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import swal from 'sweetalert';
 
+
+
 axios.defaults.baseURL ='https://talk-and-travel.pp.ua';
 
 export const token = {
