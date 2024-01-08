@@ -8,9 +8,9 @@ import SearchInput from '../SearchInput/SearchInput';
 import DMsList from '../DMsList/DMsList';
 import RoomsList from '../RoomsList/RoomsList';
 import ChatMap from '../ChatMap/ChatMap';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-export default function SearchBar() {
+function SearchBar({isOpen}) {
   const [openMap, setOpenMap] = useState(false);
   const handleOpen = () => setOpenMap(true);
   const handleClose = () => setOpenMap(false);
@@ -23,8 +23,8 @@ export default function SearchBar() {
         There are no rooms in the list.
         <br /> Find chat of a country and it will be shown here
       </Text>
-      <DMsList />
-      <RoomsList />
+      {isOpen === 'component1' ? <DMsList /> : <RoomsList />}
+      
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -48,4 +48,8 @@ export default function SearchBar() {
   );
 }
 
-// SearchBar.propTypes = {}
+SearchBar.propTypes = {
+  isOpen: PropTypes.string,
+};
+
+export default SearchBar;
