@@ -43,9 +43,9 @@ export const IconSearch = styled.div`
 export const ListWrapper = styled.div`
   position: absolute;
   top: 133px;
-  left: -16.5px;
+  left: -17px;
   width: 299.4px;
-  height: 562px;
+  height: 600px;
   margin-bottom: 48px;
   background: var(--white-color);
   border-left: 1px solid var(--color-grey-6);

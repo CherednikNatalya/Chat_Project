@@ -1,3 +1,8 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import {
   Wrapper,
   ProfileBox,
@@ -7,13 +12,13 @@ import {
   // LogOutButton,
 } from './SideBarStyled';
 
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { getUserName } from 'redux-store/AuthOperations/selectors';
 import { logOut } from 'redux-store/AuthOperations/AuthOperations';
 // import Icons from '../Icons/Icons';
 import SideBarItem from '../SideBarItem/SideBarItem';
 
-export default function SideBar() {
+function SideBar({ onClickDms, onClickRooms, isActive }) {
+  const userName = useSelector(getUserName);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,16 +29,8 @@ export default function SideBar() {
 
   const handleLogOut = (event, values) => {
     dispatch(logOut(values));
-    navigate('/login');
+    navigate('/');
     console.log('clicked logout', event);
-  };
-
-  const handleOpenDms = (open) => {
-    console.log('DMs clicked');
-  };
-
-  const handleOpenRooms = (open) => {
-    console.log('Rooms clicked');
   };
 
   return (
@@ -54,12 +51,13 @@ export default function SideBar() {
           fill="var(--color-dark)"
           size="24"
         >
-          Anton
+          {userName}
         </SideBarItem>
       </ProfileBox>
       <Frame>
         <SideBarItem
-          onClick={handleOpenDms}
+          onClick={onClickDms}
+          isActive={isActive === 'component1'}
           alt="DMs icon"
           name="dms"
           fill="var(--color-dark)"
@@ -68,7 +66,8 @@ export default function SideBar() {
           DMs
         </SideBarItem>
         <SideBarItem
-          onClick={handleOpenRooms}
+          onClick={onClickRooms}
+          isActive={isActive === 'component2'}
           alt="Rooms icon"
           name="rooms"
           fill="var(--color-dark)"
@@ -76,16 +75,6 @@ export default function SideBar() {
         >
           Rooms
         </SideBarItem>
-        {/* <FrameBox>
-          <ProfileBoxAvatar
-            onClick={() => {
-              console.log('More');
-            }}
-            src=""
-            alt="Profile Avatar"
-          />
-          <Text>More</Text>
-        </FrameBox> */}
       </Frame>
       <LogOutBox>
         <SideBarItem
@@ -103,3 +92,10 @@ export default function SideBar() {
     </Wrapper>
   );
 }
+
+SideBar.propTypes = {
+  onClickDms: PropTypes.func,
+  onClickRooms: PropTypes.func
+};
+
+export default SideBar;

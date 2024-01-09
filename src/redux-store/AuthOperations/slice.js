@@ -34,24 +34,22 @@ const handleRejected = (state, action) => {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: 
-  builder =>
+  extraReducers: builder =>
     builder
       .addCase(register.pending, handlePending)
       .addCase(register.rejected, handleRejected)
       .addCase(register.fulfilled, (state, action) => {
-
-        state.userDto = action.payload.userDto;
-        state.token = action.payload.token;
-
-        state.isLoggedIn = true;
-        console.log('register action', action)
+        return {
+          ...state,
+          userDto: action.payload.userDto,
+          token: action.payload.token,
+          isLoggedIn: true,
+        };
       })
 
       .addCase(logIn.pending, handlePending)
       .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
-
         state.userDto = action.payload.userDto;
         state.token = action.payload.token;
 
@@ -82,4 +80,3 @@ export const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-

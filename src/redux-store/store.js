@@ -12,11 +12,10 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authSlice } from 'redux-store/AuthOperations/slice';
 
-
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'userDto'],
 };
 
 export const store = configureStore({
@@ -29,7 +28,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    })
 });
 
 export const persistor = persistStore(store);

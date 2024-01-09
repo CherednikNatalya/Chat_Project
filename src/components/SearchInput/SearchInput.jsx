@@ -20,7 +20,9 @@ export default function SearchInput() {
   const [showItem, setShowItem] = useState(false);
   const autoCompleteRef = useRef(null);
 
-  const countries = mapData.features;
+  const filterCountries = mapData.features.filter(name =>
+    name.properties.ADMIN.toLowerCase().includes(searchedValue.toLowerCase())
+  );
 
   const handleChange = event => {
     setSearchedValue(event.target.value);
@@ -70,24 +72,19 @@ export default function SearchInput() {
         <ListWrapper>
           <ListItems>
             <SimpleBar style={{ maxHeight: 570 }}>
-              {countries
-                .filter(name =>
-                  name.properties.ADMIN.toLowerCase().includes(
-                    searchedValue.toLowerCase()
-                  )
-                )
-                .map((country, index) => (
-                  <Item key={index} onClick={() => handleCountryClick(country)}>
-                    <Flag
-                      loading="lazy"
-                      width="32"
-                      srcSet={`https://flagcdn.com/w40/${country.properties.code}.png 2x`}
-                      src={`https://flagcdn.com/w20/${country.properties.code}.png`}
-                      alt={`${country.properties.ADMIN} flag`}
-                    />
-                    <p>{country.properties.ADMIN}</p>
-                  </Item>
-                ))}
+              {filterCountries === 0 ? (<p>BlaBla</p>) :
+              (<>{filterCountries.map((country, index) => (
+                <Item key={index} onClick={() => handleCountryClick(country)}>
+                  <Flag
+                    loading="lazy"
+                    width="32"
+                    srcSet={`https://flagcdn.com/w40/${country.properties.code}.png 2x`}
+                    src={`https://flagcdn.com/w20/${country.properties.code}.png`}
+                    alt={`${country.properties.ADMIN} flag`}
+                  />
+                  <p>{country.properties.ADMIN}</p>
+                </Item>
+              ))}</>)}
             </SimpleBar>
           </ListItems>
         </ListWrapper>
