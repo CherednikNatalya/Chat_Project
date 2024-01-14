@@ -7,6 +7,8 @@ import {
   updateUser,
 } from '../AuthOperations/AuthOperations';
 
+import { sendDataCountryToBackend } from '../AuthOperations/DataCountryOperation';
+
 const initialState = {
   token: null,
   userDto: {
@@ -76,7 +78,14 @@ export const authSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.userDto = { ...state.userDto, ...action.payload };
+      })
+
+      .addCase(sendDataCountryToBackend.pending, handlePending)
+      .addCase(sendDataCountryToBackend.rejected, handleRejected)
+      .addCase(sendDataCountryToBackend.fulfilled, (state, action) => {
+        state.data = action.payload.data;
       }),
+
 });
 
 export default authSlice.reducer;
