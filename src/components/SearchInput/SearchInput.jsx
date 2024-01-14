@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   AutocompleteInputWrapper,
   AutocompleteInput,
@@ -8,7 +9,8 @@ import {
   Item,
   Flag,
 } from './SearchInputStyled';
-
+import { sendDataCountryToBackend } from '../../redux-store/AuthOperations/DataCountryOperation.js';
+import { getUserId } from 'redux-store/AuthOperations/selectors';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 
@@ -19,6 +21,8 @@ export default function SearchInput() {
   const [searchedValue, setSearchedValue] = useState('');
   const [showItem, setShowItem] = useState(false);
   const autoCompleteRef = useRef(null);
+  const dispatch = useDispatch();
+  const userId = useSelector(getUserId);
 
   const filterCountries = mapData.features.filter(name =>
     name.properties.ADMIN.toLowerCase().includes(searchedValue.toLowerCase())
@@ -35,9 +39,19 @@ export default function SearchInput() {
   };
 
   const handleCountryClick = country => {
+    const data = {
+      data: {
+        name: country.properties.ADMIN, 
+      flagCode: country.properties.code,
+      }
+    };
+
     setSearchedValue(country.properties.ADMIN);
-    console.log('choose country', country.properties.ADMIN);
     setShowItem(false);
+    console.log('choose country', country.properties.ADMIN);
+
+    dispatch(sendDataCountryToBackend(userId, data));
+    console.log('data to send', userId, data);
   };
 
   useEffect(() => {

@@ -2,8 +2,6 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import swal from 'sweetalert';
 
-
-
 axios.defaults.baseURL ='https://talk-and-travel.pp.ua';
 
 export const token = {
@@ -17,8 +15,6 @@ export const token = {
 
 export const register = createAsyncThunk('auth/register', async userData => {
   try {
-
-    
       const response = await axios.post(
       '/api/authentication/register',
       userData,

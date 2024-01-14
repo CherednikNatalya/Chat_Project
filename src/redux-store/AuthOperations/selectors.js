@@ -1,4 +1,5 @@
 export const getIsLoggedIn = state => state.auth.isLoggedIn;
+export const getUserId = state => state.auth.userDto.id;
 export const getUserName = state => state.auth.userDto.userName;
 export const getUserEmail = state => state.auth.userDto.userEmail;
 export const getUserPassword = state => state.auth.userDto.password;

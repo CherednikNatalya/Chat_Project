@@ -31,7 +31,7 @@ function SideBarItem({
 
 SideBarItem.propTypes = {
   onClick: PropTypes.func,
-  isActive: PropTypes.string,
+  isActive: PropTypes.bool,
   alt: PropTypes.string,
   name: PropTypes.string,
   fill: PropTypes.string,
